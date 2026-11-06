@@ -1,0 +1,45 @@
+---
+title: Provenance Ledger for Research Data
+summary: A tamper-evident record of dataset versions, model configurations and evaluation results, anchored to a distributed ledger so that results can be verified by third parties.
+category: Blockchain
+status: Ongoing
+featured: true
+order: 1
+tags:
+  - provenance
+  - data integrity
+  - verifiable research
+techStack:
+  - Python
+  - Hyperledger Fabric
+  - PostgreSQL
+  - FastAPI
+objectives:
+  - Capture provenance automatically from common ML tooling without changing researcher workflows.
+  - Anchor integrity evidence on a permissioned ledger shared among collaborating institutions.
+  - Provide a verification interface that reproduces evidence for any published result.
+researchAreas:
+  - data-integrity-provenance-decision-support
+  - ai-blockchain-integration
+people:
+  - sample-graduate
+  - sample-faculty
+  - sample-director
+publications:
+  - sample-ledger-anchored-provenance
+repoUrl: https://github.com
+timeline:
+  start: "2025"
+---
+
+> **Sample project.** This record is a development placeholder and is excluded from production builds.
+
+## Technical approach
+
+The system intercepts dataset loads, training runs and evaluation jobs through lightweight SDK hooks, producing a lineage graph for every result. Cryptographic digests of each artefact are anchored on a permissioned ledger, while the artefacts themselves remain in institutional storage.
+
+A verification service reconstructs the lineage of any published figure and checks every digest against the ledger, producing a human-readable evidence report.
+
+## Current status
+
+Placeholder status text. Replace with the verified project description.

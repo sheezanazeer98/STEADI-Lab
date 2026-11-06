@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 40" width="440" height="80" role="img" aria-label="STEADI Lab">
+  <rect x="2" y="4" width="32" height="32" rx="8" fill="none" stroke="#4a3f3a" stroke-width="2.2"/>
+  <path d="M11.5 27 L18 14 L24.5 27 Z" fill="none" stroke="#cf5a30" stroke-width="2" stroke-linejoin="round"/>
+  <circle cx="18" cy="14" r="3" fill="#cf5a30"/>
+  <circle cx="11.5" cy="27" r="3" fill="#4a3f3a"/>
+  <circle cx="24.5" cy="27" r="3" fill="#4a3f3a"/>
+  <text x="46" y="29" font-family="Manrope, Inter, Arial, sans-serif" font-size="24" font-weight="800" letter-spacing="-0.5" fill="#4a3f3a">STEADI <tspan fill="#cf5a30">Lab</tspan></text>
+</svg>

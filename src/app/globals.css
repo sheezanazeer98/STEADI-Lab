@@ -4,25 +4,16 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* -------------------------------------------------------------------------- */
+/* Design tokens                                                               */
+/* -------------------------------------------------------------------------- */
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-mono: var(--font-mono);
   --font-heading: var(--font-sans);
-  --color-sidebar-ring: var(--sidebar-ring);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar: var(--sidebar);
-  --color-chart-5: var(--chart-5);
-  --color-chart-4: var(--chart-4);
-  --color-chart-3: var(--chart-3);
-  --color-chart-2: var(--chart-2);
-  --color-chart-1: var(--chart-1);
   --color-ring: var(--ring);
   --color-input: var(--input);
   --color-border: var(--border);
@@ -39,6 +30,24 @@
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
+  --color-panel: var(--panel);
+  --color-panel-foreground: var(--panel-foreground);
+  --color-panel-muted: var(--panel-muted);
+  --color-grid: var(--grid);
+  --color-ink-soft: var(--ink-soft);
+  --color-sidebar-ring: var(--ring);
+  --color-sidebar-border: var(--border);
+  --color-sidebar-accent-foreground: var(--accent-foreground);
+  --color-sidebar-accent: var(--accent);
+  --color-sidebar-primary-foreground: var(--primary-foreground);
+  --color-sidebar-primary: var(--primary);
+  --color-sidebar-foreground: var(--foreground);
+  --color-sidebar: var(--card);
+  --color-chart-1: var(--primary);
+  --color-chart-2: var(--ink-soft);
+  --color-chart-3: var(--muted-foreground);
+  --color-chart-4: var(--border);
+  --color-chart-5: var(--foreground);
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
@@ -46,85 +55,296 @@
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
+  --shadow-card: var(--shadow-card);
+  --shadow-card-lg: var(--shadow-card-lg);
+  --animate-blink: blink 1.1s steps(2, start) infinite;
+  --animate-pulse-ring: pulse-ring 2.6s ease-out infinite;
+  --animate-marquee: marquee 28s linear infinite;
+
+  @keyframes blink {
+    to {
+      visibility: hidden;
+    }
+  }
+  @keyframes pulse-ring {
+    0% {
+      transform: scale(0.75);
+      opacity: 0.9;
+    }
+    100% {
+      transform: scale(1.8);
+      opacity: 0;
+    }
+  }
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
 }
 
+/*
+ * Palette: "Blueprint on warm paper".
+ * Cream paper background, dark-brown ink, terracotta accent and a dark cocoa
+ * panel for terminal-style surfaces. Every colour below is a token, so the whole
+ * site can be re-themed from this file.
+ */
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  --background: #f5ede3;
+  --foreground: #4a3f3a;
+  --card: #f9f3ea;
+  --card-foreground: #4a3f3a;
+  --popover: #fbf6ef;
+  --popover-foreground: #4a3f3a;
+  --primary: #cf5a30;
+  --primary-foreground: #fff8f2;
+  --secondary: #ece1d4;
+  --secondary-foreground: #4a3f3a;
+  --muted: #ede3d7;
+  --muted-foreground: #7d6d64;
+  --accent: #f0e4d6;
+  --accent-foreground: #4a3f3a;
+  --destructive: #b8432a;
+  --border: #dccfbf;
+  --input: #d6c7b6;
+  --ring: #cf5a30;
+  --grid: rgba(74, 63, 58, 0.09);
+  --ink-soft: #6b5e57;
+  --panel: #2b1f19;
+  --panel-foreground: #f1e6da;
+  --panel-muted: #9d8a7d;
+  --radius: 0.375rem;
+  --shadow-card: 6px 8px 0 -1px rgba(74, 63, 58, 0.08), 8px 10px 26px -6px rgba(74, 63, 58, 0.22);
+  --shadow-card-lg: 10px 14px 0 -2px rgba(74, 63, 58, 0.08), 14px 18px 40px -10px rgba(74, 63, 58, 0.3);
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  --background: #1d1511;
+  --foreground: #f1e6da;
+  --card: #271d18;
+  --card-foreground: #f1e6da;
+  --popover: #2b2019;
+  --popover-foreground: #f1e6da;
+  --primary: #e36a40;
+  --primary-foreground: #1d1511;
+  --secondary: #342822;
+  --secondary-foreground: #f1e6da;
+  --muted: #302419;
+  --muted-foreground: #b3a094;
+  --accent: #3a2c25;
+  --accent-foreground: #f1e6da;
+  --destructive: #e5674a;
+  --border: #3f3129;
+  --input: #4a3a31;
+  --ring: #e36a40;
+  --grid: rgba(241, 230, 218, 0.07);
+  --ink-soft: #c9b8aa;
+  --panel: #140e0b;
+  --panel-foreground: #f1e6da;
+  --panel-muted: #8f7a6d;
+  --shadow-card: 6px 8px 0 -1px rgba(0, 0, 0, 0.25), 8px 10px 26px -6px rgba(0, 0, 0, 0.5);
+  --shadow-card-lg: 10px 14px 0 -2px rgba(0, 0, 0, 0.25), 14px 18px 40px -10px rgba(0, 0, 0, 0.6);
 }
+
+/*
+ * Alternative palette (deep purple / teal). Swap the blocks above for these
+ * values to move to a cool institutional palette without touching components.
+ *
+ * :root {
+ *   --background: #f7f6fb;  --foreground: #1e1b2e;  --card: #ffffff;
+ *   --primary: #4c2a85;     --primary-foreground: #ffffff;
+ *   --secondary: #ebe7f5;   --muted: #efedf6;       --muted-foreground: #5f5a74;
+ *   --accent: #e3f4f5;      --accent-foreground: #0f5f66;
+ *   --border: #d9d4e7;      --input: #d9d4e7;       --ring: #0f9aa5;
+ *   --grid: rgba(30, 27, 46, 0.07); --ink-soft: #4d4766;
+ *   --panel: #171329;       --panel-foreground: #f3f1fa; --panel-muted: #8f88ad;
+ * }
+ */
+
+/* -------------------------------------------------------------------------- */
+/* Base                                                                        */
+/* -------------------------------------------------------------------------- */
 
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
-  body {
-    @apply bg-background text-foreground;
-  }
   html {
     @apply font-sans;
+    scroll-behavior: smooth;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
   }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "ss01", "cv11";
+  }
+  ::selection {
+    background: color-mix(in oklch, var(--primary) 28%, transparent);
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-heading tracking-tight text-balance;
+    font-weight: 800;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* Page transitions                                                            */
+/* -------------------------------------------------------------------------- */
+
+/* While the next route is loading, the current page softens out of focus. The
+   short delay keeps instant (prefetched) navigations from flickering. */
+.page-shell {
+  transition:
+    filter 280ms ease,
+    opacity 280ms ease;
+}
+.page-shell[data-navigating] {
+  transition-delay: 120ms;
+  filter: blur(8px);
+  opacity: 0.55;
+}
+@media (prefers-reduced-motion: reduce) {
+  .page-shell[data-navigating] {
+    filter: none;
+    opacity: 0.7;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* Utilities                                                                   */
+/* -------------------------------------------------------------------------- */
+
+@utility label-mono {
+  @apply font-mono text-[11px] font-medium tracking-[0.16em] uppercase;
+}
+
+@utility blueprint-grid {
+  background-image:
+    linear-gradient(to right, var(--grid) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+@utility blueprint-grid-sm {
+  background-image:
+    linear-gradient(to right, var(--grid) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+@utility paper-card {
+  @apply border border-border bg-card;
+  box-shadow: var(--shadow-card);
+}
+
+@utility paper-card-lg {
+  @apply border border-border bg-card;
+  box-shadow: var(--shadow-card-lg);
+}
+
+@utility display-text {
+  @apply font-heading tracking-[-0.035em] text-balance;
+  font-weight: 800;
+  line-height: 0.98;
+}
+
+@utility container-wide {
+  @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10;
+}
+
+@utility container-narrow {
+  @apply mx-auto w-full max-w-3xl px-5 sm:px-8;
+}
+
+@utility link-underline {
+  @apply decoration-primary/40 underline-offset-4 hover:underline hover:decoration-primary;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Long-form content (MDX)                                                     */
+/* -------------------------------------------------------------------------- */
+
+.prose-lab {
+  @apply text-[1.02rem] leading-relaxed text-foreground/90;
+}
+.prose-lab > * + * {
+  margin-top: 1.1em;
+}
+.prose-lab h2 {
+  @apply mt-10 mb-3 text-2xl sm:text-3xl;
+}
+.prose-lab h3 {
+  @apply mt-8 mb-2 text-xl sm:text-2xl;
+}
+.prose-lab h4 {
+  @apply mt-6 mb-2 text-lg;
+}
+.prose-lab p {
+  @apply text-ink-soft;
+}
+.prose-lab a {
+  @apply font-medium text-primary link-underline;
+}
+.prose-lab ul,
+.prose-lab ol {
+  @apply my-4 space-y-2 pl-6 text-ink-soft;
+}
+.prose-lab ul {
+  list-style: square;
+}
+.prose-lab ol {
+  list-style: decimal;
+}
+.prose-lab li::marker {
+  @apply text-primary;
+}
+.prose-lab blockquote {
+  @apply my-6 border-l-2 border-primary pl-5 text-lg text-foreground italic;
+}
+.prose-lab code {
+  @apply rounded-sm bg-muted px-1.5 py-0.5 font-mono text-[0.88em];
+}
+.prose-lab pre {
+  @apply my-6 overflow-x-auto rounded-md bg-panel p-5 text-sm leading-relaxed text-panel-foreground;
+}
+.prose-lab pre code {
+  @apply bg-transparent p-0 text-inherit;
+}
+.prose-lab hr {
+  @apply my-10 border-border;
+}
+.prose-lab table {
+  @apply my-6 w-full border-collapse text-sm;
+}
+.prose-lab th,
+.prose-lab td {
+  @apply border border-border px-3 py-2 text-left align-top;
+}
+.prose-lab th {
+  @apply bg-muted label-mono;
+}
+.prose-lab img {
+  @apply my-6 rounded-md border border-border;
+}
+.prose-lab strong {
+  @apply font-bold text-foreground;
 }

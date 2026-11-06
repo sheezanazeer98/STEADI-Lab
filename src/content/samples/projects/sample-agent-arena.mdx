@@ -1,0 +1,38 @@
+---
+title: Bounded Agents Testbed
+summary: A simulation environment for evaluating how tool-using language agents behave under explicit permission policies, including when and how they escalate to humans.
+category: Agentic AI
+status: Ongoing
+featured: true
+order: 3
+tags:
+  - agents
+  - safety
+  - evaluation
+techStack:
+  - TypeScript
+  - Python
+  - LangGraph
+  - Docker
+objectives:
+  - Define a machine-readable policy language for agent permissions.
+  - Measure escalation behaviour across scenario suites.
+  - Record agent commitments on a ledger to support auditing of multi-agent interactions.
+researchAreas:
+  - agentic-ai-multi-agent-systems
+  - ai-governance-human-oversight
+people:
+  - sample-graduate
+  - sample-director
+publications:
+  - sample-agent-guardrails
+repoUrl: https://github.com
+timeline:
+  start: "2025"
+---
+
+> **Sample project.** Development placeholder.
+
+## Technical approach
+
+Agents run inside sandboxed scenarios with a policy enforcer that intercepts every tool call. Scenario suites probe boundary conditions — ambiguous instructions, conflicting goals and unsafe requests — and record whether the agent complied, refused or escalated.
